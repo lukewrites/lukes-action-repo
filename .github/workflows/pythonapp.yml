@@ -31,5 +31,5 @@ jobs:
       run: |
         cd tdvt/test
         python tdvt_test.py -v CommandLineTest ConfigTest DiffTest PrintConfigurationsTest
-    name: Run Connector Packager unit tests with JDK ${{ matrix.java }}
+    - name: Run Connector Packager unit tests with JDK ${{ matrix.java }}
       run: cd connector-packager && python setup.py test
