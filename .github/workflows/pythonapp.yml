@@ -4,11 +4,12 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: windows-latest
     strategy:
       matrix:
         java: ['1.8', '1.10', '1.12']
+        os: [windows-latest, mac-latest]
+    runs-on: ${{matrix.os}}
+    
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
@@ -32,4 +33,6 @@ jobs:
         cd tdvt/test
         python tdvt_test.py -v CommandLineTest ConfigTest DiffTest PrintConfigurationsTest
     - name: Run Connector Packager unit tests with JDK ${{ matrix.java }}
-      run: python connector-packager/setup.py test
+      run: |
+        cd connector-packager
+        python setup.py test
