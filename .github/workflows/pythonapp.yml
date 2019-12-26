@@ -1,5 +1,4 @@
-name: Python application
-
+name: SDK Demo CI
 on: [push]
 
 jobs:
@@ -32,10 +31,9 @@ jobs:
       run: |
         cd tdvt/test
         python tdvt_test.py -v CommandLineTest ConfigTest DiffTest PrintConfigurationsTest
-  test:
-    runs-on: ${{matrix.os}}
-    steps:
     - name: Run Connector Packager unit tests with JDK ${{ matrix.java }}
       run: |
         cd connector-packager
+        pwd
+        ls -la
         python setup.py test
