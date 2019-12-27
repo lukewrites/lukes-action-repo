@@ -7,7 +7,8 @@ from connector_packager.connector_file import ConnectorFile
 
 logger = logging.getLogger(__name__)
 
-TEST_FOLDER = Path("tests/test_resources")
+cwd = Path().cwd()
+TEST_FOLDER = cwd / "tests/test_resources"
 
 
 class TestXSDValidator(unittest.TestCase):
